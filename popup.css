@@ -1,0 +1,19 @@
+body {
+    background-color: #ceeee0;
+    align-items: center
+}
+
+h1 {
+    color: rgb(74, 117, 98);
+    font: 14px, "Marck Script";
+}
+
+h2 { 
+    color:rgb(45, 64, 55);
+    font: 10px, "Delius"; 
+}
+
+#stopwatch-container {
+    border: 2px solid white;
+    padding: 10px;
+}
