@@ -4,7 +4,7 @@ let claude = "https://claude";
 let gemini = "*://gemini.google.com/*";
 let powerDraw;
 
-if (location.hostname.includes("chat.openai.com")) { 
+if (location.hostname.includes("chatgpt.com")) { 
     powerDraw = 0.34;
 }
 if (location.hostname.includes("claude.ai")) {
@@ -14,14 +14,8 @@ if (location.hostname.includes("gemini.google.com")) {
     powerDraw = 0.24;
 }
 
-if (location.hostname.includes("openai.com" || "claude.ai" || "gemini.google.com")) { 
+if (powerDraw !== undefined) {
     chrome.runtime.sendMessage({
-        type: "AI-OPEN", powerDraw
+        type: "AI-OPEN", powerDraw: powerDraw
     });
 }
-
-window.addEventListener ("beforeunload"), () => { 
-    chrome.runtime.sendMessage({
-        type: "AI-CLOSE"
-    });
-} 
