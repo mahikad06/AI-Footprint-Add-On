@@ -2,7 +2,7 @@
 
 let startTime;
 let powerDraw;
-let gcd = 0.04;
+let gcd = 0.384;
 const pue = 1.1;
 
 // Detect

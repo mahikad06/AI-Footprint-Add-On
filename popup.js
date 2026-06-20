@@ -8,13 +8,16 @@ function wait(ms) {
     return new Promise(resolve => setTimeout(resolve,ms));
 }
 
+let dayHours = 0; 
+let dayMinutes = 0;
+let daySeconds = 0;
 
 function updateTime(start) {
     const elapsedTime = Date.now() - start;
 
-    let hours = Math.floor(elapsedTime / (1000*60*60));
-    let minutes = Math.floor(elapsedTime / (1000*60)%60);
-    let seconds = Math.floor(elapsedTime / 1000 % 60);
+    let hours = dayHours + Math.floor(elapsedTime / (1000*60*60));
+    let minutes = dayMinutes + Math.floor(elapsedTime / (1000*60)%60);
+    let seconds = daySeconds + Math.floor(elapsedTime / 1000 % 60);
 
     hours = String(hours).padStart(2, "0");
     minutes = String(minutes).padStart(2, "0");
@@ -48,6 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const emissions = calcEmissions(hours, data.powerDraw, data.pue, data.gcd);
         document.getElementById("emissions").textContent = `${emissions.toFixed(6)} kg CO2`;
         });
+
+        chrome.runtime.onMessage ((msg, sender, sendResponse) => {
+            if (msg.type === "AI-Close") {
+                dayHours = hours;
+                dayMinutes = minutes;
+                daySeconds = seconds;
+            }
+        })
     }
     updateUI();
     setInterval(updateUI, 1000);
