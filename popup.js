@@ -1,6 +1,6 @@
 // Functions
-function calcEmissions(hours, pD, pue, gcd) {
-    emissions = hours * pD * pue * gcd;
+function calcEmissions(time, pD, pue, gcd) {
+    emissions = time * pD * pue * gcd;
     return emissions;
 }
 
@@ -8,16 +8,17 @@ function wait(ms) {
     return new Promise(resolve => setTimeout(resolve,ms));
 }
 
-let dayHours = 0; 
-let dayMinutes = 0;
-let daySeconds = 0;
+let hours; 
+let minutes;
+let seconds;
+let dayElapsed = 0;
 
 function updateTime(start) {
-    const elapsedTime = Date.now() - start;
+    const elapsedTime = dayElapsed + (Date.now() - start); 
 
-    const hours = dayHours + Math.floor(elapsedTime / (1000*60*60));
-    const minutes = dayMinutes + Math.floor(elapsedTime / (1000*60)%60);
-    const seconds = daySeconds + Math.floor(elapsedTime / 1000 % 60);
+    hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+    minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    seconds = Math.floor((elapsedTime / 1000) % 60);
 
     hours = String(hours).padStart(2, "0");
     minutes = String(minutes).padStart(2, "0");
@@ -45,24 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         document.getElementById("display").textContent = updateTime(data.startTime);
-        const elapsed = Date.now() - data.startTime;
-        const hours = elapsed / (1000 * 60 * 60);
+        const elapsed = dayElapsed + (Date.now() - data.startTime);
+        const time = elapsed / (1000 * 60 * 60);
         
-        const emissions = calcEmissions(hours, data.powerDraw, data.pue, data.gcd);
+        const emissions = calcEmissions(time, data.powerDraw, data.pue, data.gcd);
         document.getElementById("emissions").textContent = `${emissions.toFixed(6)} kg CO2`;
         });
-
-        chrome.runtime.onMessage.addListener ((msg, sender, sendResponse) => {
-            if (msg.type === "AI-Close") {
-                dayHours = hours;
-                dayMinutes = minutes;
-                daySeconds = seconds;
-            }
-        })
-    }
+    } 
     updateUI();
     setInterval(updateUI, 1000);
 })
 
-
+chrome.runtime.onMessage.addListener ((msg, sender, sendResponse) => {
+    if (msg.type === "AI-CLOSE") {
+        dayElapsed += Date.now() - msg.startTime;
+    }
+})
 

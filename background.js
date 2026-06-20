@@ -19,7 +19,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             startTime, powerDraw, gcd, pue
         });
     }
+
 });
+
 
 //Find Grid Carbon Density
 //let userLoc = console.log("What country do you live in? Please enter its full name in double quotation marks.")
