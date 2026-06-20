@@ -15,9 +15,9 @@ let daySeconds = 0;
 function updateTime(start) {
     const elapsedTime = Date.now() - start;
 
-    let hours = dayHours + Math.floor(elapsedTime / (1000*60*60));
-    let minutes = dayMinutes + Math.floor(elapsedTime / (1000*60)%60);
-    let seconds = daySeconds + Math.floor(elapsedTime / 1000 % 60);
+    const hours = dayHours + Math.floor(elapsedTime / (1000*60*60));
+    const minutes = dayMinutes + Math.floor(elapsedTime / (1000*60)%60);
+    const seconds = daySeconds + Math.floor(elapsedTime / 1000 % 60);
 
     hours = String(hours).padStart(2, "0");
     minutes = String(minutes).padStart(2, "0");
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("emissions").textContent = `${emissions.toFixed(6)} kg CO2`;
         });
 
-        chrome.runtime.onMessage ((msg, sender, sendResponse) => {
+        chrome.runtime.onMessage.addListener ((msg, sender, sendResponse) => {
             if (msg.type === "AI-Close") {
                 dayHours = hours;
                 dayMinutes = minutes;
