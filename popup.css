@@ -1,19 +1,53 @@
 body {
-    background-color: #ceeee0;
-    align-items: center
+    margin: 0;
+    padding: 16px;
+    width: 240px;
+
+    background-color: #F7F4EC;
+    font-family: Roboto;
+    color: #1E2420;
+    display: block;
+    align-items: center;
+    text-align: center;
 }
 
 h1 {
-    color: rgb(74, 117, 98);
-    font: 14px, "Marck Script";
+    font: 26px, "Marck Script";
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 h2 { 
-    color:rgb(45, 64, 55);
-    font: 10px, "Delius"; 
+    margin: 4px 0 4px;
+    font: 14px, "Delius"; 
+    line-height: 1.4;
+    color: #7A9A83;
 }
 
-#stopwatch-container {
-    border: 2px solid white;
-    padding: 10px;
+.stopwatch-container {
+    border: 8px solid #FDFBF7;
+    background: #F7F4EC;
+    padding: 6px 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+#display {
+    font-size: 40px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #2C4C3B;
+}
+
+#emissions {
+    font-size: 22px;
+    font-weight: 600;
+    color: #7A9A83;
+    font-variant-numeric: tabular-nums;
 }
