@@ -1,0 +1,212 @@
+Country,Code,Year,Carbon intensity of electricity per kWh,World region according to OWID
+Afghanistan,AFG,2024,131.31,Asia
+Albania,ALB,2024,25.18,Europe
+Algeria,DZA,2024,632.94,Africa
+American Samoa,ASM,2024,611.11,Oceania
+Angola,AGO,2024,185.38,Africa
+Antigua and Barbuda,ATG,2024,594.6,North America
+Argentina,ARG,2025,346,South America
+Armenia,ARM,2025,211.93,Asia
+Aruba,ABW,2024,550,North America
+Australia,AUS,2025,525.18,Oceania
+Austria,AUT,2025,116.91,Europe
+Azerbaijan,AZE,2025,631.9,Asia 
+Bahamas,BHS,2024,653.33,North America
+Bahrain,BHR,2024,902.24,Asia
+Bangladesh,BGD,2025,696.13,Asia
+Barbados,BRB,2024,594.6,North America
+Belarus,BLR,2025,309.25,Europe
+Belgium,BEL,2025,149.82,Europe
+Belize,BLZ,2024,170.21,North America
+Benin,BEN,2024,584.16,Africa
+Bermuda,BMU,2024,639.34,North America
+Bhutan,BTN,2024,23.64,Asia
+Bolivia,BOL,2025,481.29,South America
+Bosnia and Herzegovina,BIH,2025,570.64,Europe
+Botswana,BWA,2024,851.31,Africa
+Brazil,BRA,2025,109.95,South America
+British Virgin Islands,VGB,2023,647.06,North America
+Brunei,BRN,2024,892.09,Asia
+Bulgaria,BGR,2025,275.55,Europe
+Burkina Faso,BFA,2024,562.13,Africa
+Burundi,BDI,2024,183.67,Africa
+Cambodia,KHM,2025,498.87,Asia
+Cameroon,CMR,2024,225.9,Africa
+Canada,CAN,2025,190.72,North America
+Cape Verde,CPV,2024,461.54,Africa
+Cayman Islands,CYM,2024,633.8,North America
+Central African Republic,CAF,2023,0,Africa
+Chad,TCD,2024,621.62,Africa
+Chile,CHL,2025,289.49,South America
+China,CHN,2025,525.34,Asia
+Colombia,COL,2025,186.81,South America
+Comoros,COM,2023,642.86,Africa
+Congo,COG,2024,716.12,Africa
+Cook Islands,COK,2024,250,Oceania
+Costa Rica,CRI,2025,24.2,North America
+Cote d'Ivoire,CIV,2024,405.01,Africa
+Croatia,HRV,2025,158.5,Europe
+Cuba,CUB,2024,642.82,North America
+Cyprus,CYP,2025,489,Europe
+Czechia,CZE,2025,401.46,Europe
+Democratic Republic of Congo,COD,2024,27.64,Africa
+Denmark,DNK,2025,114.41,Europe
+Djibouti,DJI,2024,450,Africa
+Dominica,DMA,2023,600,North America
+Dominican Republic,DOM,2025,537.48,North America
+East Timor,TLS,2024,666.67,Asia
+Ecuador,ECU,2025,159.02,South America
+Egypt,EGY,2025,563.23,Africa
+El Salvador,SLV,2025,139.32,North America
+Equatorial Guinea,GNQ,2024,644.3,Africa
+Eritrea,ERI,2024,577.78,Africa
+Estonia,EST,2025,319.15,Europe
+Eswatini,SWZ,2024,131.15,Africa
+Ethiopia,ETH,2025,23.08,Africa
+Falkland Islands,FLK,2023,1000,South America
+Faroe Islands,FRO,2023,346.94,Europe
+Fiji,FJI,2024,278.26,Oceania
+Finland,FIN,2025,57.47,Europe
+France,FRA,2025,41.44,Europe
+French Guiana,GUF,2023,244.9,South America
+French Polynesia,PYF,2024,430.56,Oceania
+Gabon,GAB,2024,523.08,Africa
+Gambia,GMB,2024,666.67,Africa
+Georgia,GEO,2025,145.93,Asia
+Germany,DEU,2025,329.65,Europe
+Ghana,GHA,2024,468.89,Africa
+Gibraltar,GIB,2024,590.91,Europe
+Greece,GRC,2025,315.09,Europe
+Greenland,GRL,2024,150,North America
+Grenada,GRD,2024,666.67,North America
+Guadeloupe,GLP,2023,497.01,North America
+Guam,GUM,2024,607.53,Oceania
+Guatemala,GTM,2024,301.46,North America
+Guinea,GIN,2024,181.14,Africa
+Guinea-Bissau,GNB,2024,625,Africa
+Guyana,GUY,2024,644.93,South America
+Haiti,HTI,2024,534.88,North America
+Honduras,HND,2024,322.12,North America
+Hong Kong,HKG,2024,675.48,Asia
+Hungary,HUN,2025,163.02,Europe
+Iceland,ISL,2024,27.82,Europe
+India,IND,2025,670.13,Asia
+Indonesia,IDN,2024,680.25,Asia
+Iran,IRN,2025,659.53,Asia
+Iraq,IRQ,2024,683.1,Asia
+Ireland,IRL,2025,256.54,Europe
+Israel,ISR,2025,492.69,Asia
+Italy,ITA,2025,284.78,Europe
+Jamaica,JAM,2024,563.01,North America
+Japan,JPN,2025,477.26,Asia
+Jordan,JOR,2024,529.79,Asia
+Kazakhstan,KAZ,2025,805.32,Asia
+Kenya,KEN,2025,95.44,Africa
+Kiribati,KIR,2024,500,Oceania
+Kosovo,OWID_KOS,2025,900.94,Europe
+Kuwait,KWT,2025,635.31,Asia
+Kyrgyzstan,KGZ,2025,152.73,Asia
+Laos,LAO,2024,232.08,Asia
+Latvia,LVA,2025,138.76,Europe
+Lebanon,LBN,2024,389.51,Asia
+Liberia,LBR,2024,315.79,Africa
+Libya,LBY,2024,826.83,Africa
+Lithuania,LTU,2025,138.36,Europe
+Luxembourg,LUX,2025,123.38,Europe
+Macao,MAC,2024,474.36,Asia
+Madagascar,MDG,2024,432.1,Africa
+Malawi,MWI,2024,54.65,Africa
+Malaysia,MYS,2025,601.97,Asia
+Maldives,MDV,2024,611.77,Asia
+Mali,MLI,2024,538.59,Africa
+Malta,MLT,2025,484.02,Europe
+Martinique,MTQ,2023,529.8,North America
+Mauritania,MRT,2024,512.08,Africa
+Mauritius,MUS,2024,642.23,Africa
+Mexico,MEX,2025,474.02,North America
+Moldova,MDA,2025,633.12,Europe
+Mongolia,MNG,2025,816.31,Asia
+Montenegro,MNE,2025,264.23,Europe
+Montserrat,MSR,2024,1000,North America
+Morocco,MAR,2025,596.4,Africa
+Mozambique,MOZ,2024,129.36,Africa
+Myanmar,MMR,2024,502.99,Asia
+Namibia,NAM,2024,48.78,Africa
+Nauru,NRU,2024,600,Oceania
+Nepal,NPL,2024,24.26,Asia
+Netherlands,NLD,2025,253.56,Europe
+New Caledonia,NCL,2024,560.9,Oceania
+New Zealand,NZL,2025,92.76,Oceania
+Nicaragua,NIC,2024,300.89,North America
+Niger,NER,2024,673.68,Africa
+Nigeria,NGA,2025,455.71,Africa
+North Korea,PRK,2024,340.59,Asia
+North Macedonia,MKD,2025,441.35,Europe
+Norway,NOR,2025,28.11,Europe
+Oman,OMN,2025,544.47,Asia
+Pakistan,PAK,2025,346.56,Asia
+Palestine,PSE,2024,414.14,Asia
+Panama,PAN,2024,221.15,North America
+Papua New Guinea,PNG,2024,513.74,Oceania
+Paraguay,PRY,2025,24.7,South America
+Peru,PER,2025,238.25,South America
+Philippines,PHL,2025,588.29,Asia
+Poland,POL,2025,588.6,Europe
+Portugal,PRT,2025,127.91,Europe
+Puerto Rico,PRI,2025,654.66,North America
+Qatar,QAT,2025,581.52,Asia
+Reunion,REU,2023,394.14,Africa
+Romania,ROU,2025,250.75,Europe
+Russia,RUS,2025,449.73,Europe
+Rwanda,RWA,2024,353.98,Africa
+Saint Helena,SHN,2023,1000,Africa
+Saint Kitts and Nevis,KNA,2024,608.7,North America
+Saint Lucia,LCA,2024,650,North America
+Saint Pierre and Miquelon,SPM,2023,600,North America
+Saint Vincent and the Grenadines,VCT,2024,600,North America
+Samoa,WSM,2024,375,Oceania
+Sao Tome and Principe,STP,2023,555.56,Africa
+Saudi Arabia,SAU,2024,691.95,Asia
+Senegal,SEN,2024,539.97,Africa
+Serbia,SRB,2025,695.8,Europe
+Seychelles,SYC,2024,555.56,Africa
+Sierra Leone,SLE,2024,47.62,Africa
+Singapore,SGP,2025,497.09,Asia
+Slovakia,SVK,2025,94.85,Europe
+Slovenia,SVN,2025,183.29,Europe
+Solomon Islands,SLB,2024,636.36,Oceania
+Somalia,SOM,2024,511.63,Africa
+South Africa,ZAF,2025,699.29,Africa
+South Korea,KOR,2025,417.06,Asia
+South Sudan,SSD,2024,642.86,Africa
+Spain,ESP,2025,153.6,Europe
+Sri Lanka,LKA,2025,329.28,Asia
+Sudan,SDN,2024,153.69,Africa
+Suriname,SUR,2024,321.84,South America
+Sweden,SWE,2025,35.26,Europe
+Switzerland,CHE,2025,39.22,Europe
+Syria,SYR,2024,706.19,Asia
+Taiwan,TWN,2025,633.21,Asia
+Tajikistan,TJK,2025,72.56,Asia
+Tanzania,TZA,2024,345.02,Africa
+Thailand,THA,2025,545.74,Asia
+Togo,TGO,2024,422.54,Africa
+Tonga,TON,2024,571.43,Oceania
+Trinidad and Tobago,TTO,2024,681.68,North America
+Tunisia,TUN,2025,560.29,Africa
+Turkey,TUR,2025,474.74,Asia
+Turkmenistan,TKM,2024,1306.27,Asia
+Turks and Caicos Islands,TCA,2024,629.63,North America
+Uganda,UGA,2024,58.52,Africa
+United Arab Emirates,ARE,2024,467.51,Asia
+United Kingdom,GBR,2025,217.41,Europe
+United States,USA,2025,384.4,North America
+United States Virgin Islands,VIR,2023,632.35,North America
+Uruguay,URY,2025,80.4,South America
+Uzbekistan,UZB,2025,1000,Asia
+Vanuatu,VUT,2023,500,Oceania
+Venezuela,VEN,2024,85.86,South America
+Vietnam,VNM,2025,460.73,Asia
+Yemen,YEM,2024,592.38,Asia
+Zambia,ZMB,2024,119.68,Africa
+Zimbabwe,ZWE,2024,384.02,Africa

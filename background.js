@@ -6,47 +6,66 @@ let gcd = 0.384;
 const pue = 1.1;
 let dayElapsed;
 
-chrome.storage.local.set({
-    startTime, dayElapsed, powerDraw
-});
-
 // Detect
 
-chrome.storage.local.get(["startTime", "dayElapsed", "powerDraw"], data => {
+chrome.storage.local.get(["startTime", "dayElapsed", "powerDraw", "gcd"], data => {
     startTime = data.startTime || null;
     dayElapsed = data.dayElapsed || 0;
     powerDraw = data.powerDraw || 0;
+    gcd = data.gcd || 0.384;
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (msg.type === "AI-OPEN") {
-       if (!startTime) startTime = Date.now();
-        powerDraw = msg.powerDraw;
-        chrome.storage.local.set({
-            startTime, powerDraw
-        });
-        sendResponse({ ok: true});
+        resetDay().then(() => {
+            if (!startTime) startTime = Date.now();
+            powerDraw = msg.powerDraw;
+            chrome.storage.local.set({
+                startTime, powerDraw
+            });
+            sendResponse({ ok: true});
+            });
+        return true;
     }
 
     if (msg.type === "GET_DATA") {
-        sendResponse({
-            startTime, powerDraw, gcd, pue, dayElapsed
+        resetDay().then(() => {
+            sendResponse({
+                startTime, powerDraw, gcd, pue, dayElapsed
+            });
         });
+        return true;
     }
 
-    //if (msg.type === "USER-INPUT") {
-      //  lookUpCountry(msg.userLoc);
-    //}
+    if (msg.type === "USER-INPUT") {
+        lookUpCountry(msg.userLoc).then(value => {
+            gcd = value;
+            chrome.storage.local.set({ gcd });
+            sendResponse({
+                ok: true, gcd
+            });
+        });
+        return true;
+  }
 });
 
 function checkActiveTab() {
     chrome.tabs.query({active:true, currentWindow:true}, tabs => {
-        if (!tabs.length) return;
+        
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            return;
+        };
+        
+        if (!tabs.length || tabs.length === 0) { 
+            return;
+        };
         const url = tabs[0].url || "";
         const isAI = 
             url.includes("chatgpt.com") ||
             url.includes("claude.ai") ||
             url.includes("gemini.google.com");
+        
         if (isAI) {
             if(!startTime) {
                 startTime = Date.now();
@@ -70,72 +89,47 @@ chrome.tabs.onActivated.addListener(checkActiveTab);
 chrome.tabs.onUpdated.addListener(checkActiveTab);
 chrome.windows.onFocusChanged.addListener(checkActiveTab);
 
-
 //Day Reset
 
 let currentDay;
 
-chrome.storage.local.get(["currentDay"], (data) => {
-    currentDay = data.currentDay || new Date().toDateString();
+async function resetDay() {
+
     const today = new Date().toDateString();
-    if (today !== currentDay) {
+    const data = await chrome.storage.local.get([
+        "currentDay", "dayElapsed", "startTime"
+    ]);
+
+    if (today !== data.currentDay) {
         currentDay = today;
         dayElapsed = 0;
-        chrome.storage.local.set({
-            currentDay, dayElapsed
+        startTime = null;
+        await chrome.storage.local.set({
+            currentDay, dayElapsed, startTime
         });
     }
-});
+};
 
-/*chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (!changeInfo.url) return;
 
-    const isAI = 
-        changeInfo.url.includes("chatgpt.com") ||
-        changeInfo.url.includes("claude.ai") ||
-        changeInfo.url.includes("gemini.google.com");
-
-    if (!isAI && startTime) {
-        dayElapsed += Date.now() - startTime;
-        //chrome.runtime.sendMessage({ 
-        //    type: "AI-CLOSE", startTime
-        //});
-        startTime = null; 
-        chrome.storage.local.set({
-            dayElapsed, startTime
-        });
-    }
-    
-    if (isAI && !startTime) {
-        startTime = Date.now();
-        //chrome.runtime.sendMessage({
-        //    type: "AI-OPEN", powerDraw
-       // });
-    }
-});
-*/
 //Find Grid Carbon Density
-//chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
- // if (msg.type === "USER-INPUT") { 
- //     userLoc = msg.userLoc;
- //     gcd = lookUpCountry(userLoc);
- // }
-//})
-/* 
+ 
 async function lookUpCountry(userLoc) {
-    const response = await fetch(chrome.runtime.getURL("carbon-intensity-training.csv"));
+    const response = await fetch(chrome.runtime.getURL("updated-carbon-intensity-electricity.csv"));
     const csvText = await response.text();
-    const dataset = Papa.parse(csvText, {header: true}).data;
-    const searchColumn = 0;
-    const match = dataset.find(row => row[searchColumn].toLowerCase() === userLoc.toLowerCase());
-    
-    if (match) {
-        gcd = (Number(match[3])) / 1000;
-        console.log(gcd);
+    const rows = csvText.trim().split("\n");
+    console.log(rows);
+
+    rows.shift();
+    for (const row of rows) {
+        const column = row.split(",");
+        const country = column[0].trim();
+        if (country.toLowerCase() === userLoc.toLowerCase()) {
+            const gcd = Number(column[3]) / 1000;
+            await chrome.storage.local.set({
+                userLoc, gcd
+            });
+            return gcd;
+        }
     }
-    else {
-        gcd = 0.384;
-    }
-    return gcd;
-}
-*/
+    return 0.384;
+};

@@ -30,34 +30,39 @@ function updateTime(start, elapsed) {
 
 let displayEm;
 
+function updateUI() {
+    chrome.runtime.sendMessage ({ type: "GET_DATA"}, (data) => {
+        console.log(data);
+       if (!data) {
+        document.getElementById("display").textContent = "00:00:00";
+        document.getElementById("emissions").textContent = "0.000000 kg CO2";
+        return;
+    }
+        
+    document.getElementById("display").textContent = updateTime(data.startTime, data.dayElapsed);
+    const elapsed = data.dayElapsed + (data.startTime ? Date.now() - data.startTime : 0);
+    const hours = elapsed / (1000 * 60 * 60);
+        
+    console.log({hours, powerDraw: data.powerDraw, pue: data.pue})
+    const emissions = calcEmissions(hours, data.powerDraw, data.pue, data.gcd);
+    document.getElementById("emissions").textContent = `${emissions.toFixed(6)} kg CO2`;
+    });
+} 
+
 document.addEventListener('DOMContentLoaded', () => {
-    function updateUI() {
-        chrome.runtime.sendMessage ({ type: "GET_DATA"}, (data) => {
-            console.log(data);
-            if (!data) {
-            document.getElementById("display").textContent = "00:00:00";
-            document.getElementById("emissions").textContent = "0.000000 kg CO2";
-            return;
-        }
-        
-        document.getElementById("display").textContent = updateTime(data.startTime, data.dayElapsed);
-        const elapsed = data.dayElapsed + (data.startTime ? Date.now() - data.startTime : 0);
-        const hours = elapsed / (1000 * 60 * 60);
-        
-        console.log({hours, powerDraw: data.powerDraw, pue: data.pue})
-        const emissions = calcEmissions(hours, data.powerDraw, data.pue, data.gcd);
-        document.getElementById("emissions").textContent = `${emissions.toFixed(6)} kg CO2`;
-        });
-    } 
     updateUI();
     setInterval(updateUI, 1000);
 })
-/*
-document.getElementById("save-loc").addEventListener("click", () => {
+
+// Location Input 
+document.getElementById("loc-form").addEventListener("submit", (e) => {
+    e.preventDefault();
     const userLoc = document.getElementById("loc-input").value;
     chrome.runtime.sendMessage({
         type: "USER-INPUT", userLoc
-    });
-    console.log(userLoc)
+    }, 
+(response) => {
+    console.log(response);
+    updateUI();
+});
 })
-    */
