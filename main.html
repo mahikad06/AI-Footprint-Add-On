@@ -5,26 +5,84 @@
         <link rel="stylesheet" type="text/css" href="popup.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MarckScript|Delius">
     </head> 
-    <body>
-        <h1>AI Footprint</h1>
-        <h2> Track your carbon footprint with each AI prompt. </h2>
+    <body class="darkmode">
+        <section class="card">
+            <h1>AI Footprint</h1>
+            <h2> Track your carbon footprint with each AI prompt. </h2>
 
-        <div class="inputs" id="inputs">
-            <form class="loc-form" id="loc-form" action="#">
-                <input class="loc-input" type="text" id="loc-input" placeholder="What country do you live in? Please enter its full name."> 
-                <button type="submit" class="loc-button">ADD</button>
-            </form>
-        </div>
+            <div class="inputs" id="inputs">
+                <form class="loc-form" id="loc-form" action="#">
+                    <input class="loc-input" type="text" id="loc-input" placeholder="What country do you live in? Please enter its full name."> 
+                    <button type="submit" class="loc-button">ADD</button>
+                </form>
+            </div>
         
-        <div class="stopwatch-container">
-            <p class="label"> Today's AI Usage </p>
-            <div id="display">00:00:00</div>
+            <div class="stopwatch-container">
+                <p class="label"> Today's AI Usage </p>
+                <div id="display" class="darkmode">00:00:00</div>
 
-            <p>  
-                <span id="emissions"></span>
-            </p>
-        </div>
+                <p>  
+                    <span id="emissions"></span>
+                </p>
+            </div>
+        </section>
+
+        <button id="settings" style="width: 50px; height: 50px;">
+            <img src="settings_icon.png" style="width: 50px;">
+        </button>
+
+        <button id="dashboard" style="width: 50px; height: 50px;">
+            <img src="dashboard_icon.png" style="width: 50px;">
+        </button>
         
-        <script src="popup.js"></script>
+
+        <!--DASHBOARD-->
+        <section class="card" style="display: none;">
+            <h1> AI Footprint </h1>
+
+            <h2> Personalization </h2>
+
+            <label> Country </label>
+            <input id="country" placeholder="Enter country name"/>
+            <button id="save-country">
+                Save
+            </button>
+
+            <h2> Display </h2>
+
+            <label class="toggle">
+                <input id="always-visible" type="checkbox">
+                <span> Always show dashboard </span>
+            </label>
+
+        </section>
+
+
+        <!--OVERLAY-->
+        <section class="card" style="display: none;">
+        <h1 class="af-title"> 
+            AI Footprint
+        </h1>
+        <div class="af-time">
+            00:00:00
+        </div>
+        <div class="af-carbon">
+            0.000000 kg CO2
+        </div>
+        <button id="af-toggle">
+            Hide
+        </button
+        >
+        </section>
+      
+      
+        <script src="popup.js">
+            document.getElementById("settings").onclick=()=>{
+                location.href="settings.html";
+            };
+            document.getElementById("dashboard").onclick=()=>{
+                location.href="dashboard.html";
+            };
+        </script>
     </body>
 </html>

@@ -3,12 +3,20 @@ body {
     padding: 16px;
     width: 240px;
 
-    background-color: #F7F4EC;
     font-family: Roboto;
-    color: #1E2420;
     display: block;
     align-items: center;
     text-align: center;
+}
+
+body.lightmode {
+    background-color: #F7F4EC;
+    color: #1E2420;
+}
+
+body.darkmode {
+    background-color: #1E2420;
+    color: #F7F4EC;
 }
 
 h1 {
@@ -42,7 +50,14 @@ h2 {
     font-size: 40px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
+}
+
+#display.lightmode {
     color: #2C4C3B;
+}
+
+#display.darkmode {
+    color: #408d64;
 }
 
 #emissions {
@@ -50,4 +65,40 @@ h2 {
     font-weight: 600;
     color: #7A9A83;
     font-variant-numeric: tabular-nums;
+}
+
+#ai-footprint-widget{
+    position: fixed;
+    right: 20px;
+    z-index: 999999;
+    width: 220px;
+    padding: 16px;
+   /*background: #F7F4EC;
+    color: #1E2420; */
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.25);
+}
+
+.af-title{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.af-time{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.af-carbon{
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+button{
+    margin-top: 10px;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 8px;
+    background: #2C4C3B;
+    color: white;
 }

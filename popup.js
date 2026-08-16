@@ -4,10 +4,6 @@ function calcEmissions(hours, pD, pue, gcd) {
     return emissions;
 }
 
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve,ms));
-}
-
 function updateTime(start, elapsed) {
     let elapsedTime = elapsed;
 
@@ -66,3 +62,12 @@ document.getElementById("loc-form").addEventListener("submit", (e) => {
     updateUI();
 });
 })
+
+document.getElementById("settings").onclick=()=>{
+    location.href="settings.html";
+};
+document.getElementById("dashboard").onclick=()=>{
+    location.href="dashboard.html";
+};
+
+//light mode, dark mode: element.classList.add("selected");

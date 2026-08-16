@@ -8,7 +8,7 @@ let dayElapsed;
 
 // Detect
 
-chrome.storage.local.get(["startTime", "dayElapsed", "powerDraw", "gcd"], data => {
+const initialState = chrome.storage.local.get(["startTime", "dayElapsed", "powerDraw", "gcd"], data => {
     startTime = data.startTime || null;
     dayElapsed = data.dayElapsed || 0;
     powerDraw = data.powerDraw || 0;
@@ -16,6 +16,7 @@ chrome.storage.local.get(["startTime", "dayElapsed", "powerDraw", "gcd"], data =
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    initialState.then(async() => {
     if (msg.type === "AI-OPEN") {
         resetDay().then(() => {
             if (!startTime) startTime = Date.now();
@@ -47,6 +48,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         });
         return true;
   }
+    })
 });
 
 function checkActiveTab() {
@@ -80,6 +82,7 @@ function checkActiveTab() {
                 chrome.storage.local.set({
                     startTime, dayElapsed
                 });
+                saveDailyHistory();
             }
         }
     });
@@ -95,12 +98,15 @@ let currentDay;
 
 async function resetDay() {
 
-    const today = new Date().toDateString();
+    const today = new Date().toLocaleDateString();
     const data = await chrome.storage.local.get([
         "currentDay", "dayElapsed", "startTime"
     ]);
 
     if (today !== data.currentDay) {
+        if (data.currentDay && data.dayElapsed) {
+            await saveDailyHistory(data.currentDay, data.dayElapsed);
+        };
         currentDay = today;
         dayElapsed = 0;
         startTime = null;
@@ -133,3 +139,27 @@ async function lookUpCountry(userLoc) {
     }
     return 0.384;
 };
+
+//Daily History
+
+async function saveDailyHistory(date= new Date().toLocaleDateString(), elapsed = dayElapsed) {
+ //   const today = new Date()
+ //       .toISOString()
+ //       .split("T")[0];
+    const data = await chrome.storage.local.get([
+        "history"//, "dayElapsed"
+    ]);
+    let history = data.history || {};
+    history[date] = elapsed || 0;
+
+    //keeps only last 7 days; change when i implement monthly
+    const dates = Object.keys(history).sort().slice(-7);
+    const trimmed = {};
+    dates.forEach(date=>{
+        trimmed[date] = history[date];
+    });
+
+    await chrome.storage.local.set({
+        history: trimmed
+    });
+}
